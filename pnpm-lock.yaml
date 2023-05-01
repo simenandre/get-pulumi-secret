@@ -30,9 +30,6 @@ devDependencies:
   '@cobraz/prettier':
     specifier: ^2.0.1
     version: 2.0.1(prettier@2.8.8)
-  '@tsconfig/esm':
-    specifier: ^1.0.3
-    version: 1.0.3
   '@tsconfig/node-lts':
     specifier: ^18.12.1
     version: 18.12.1
@@ -439,10 +436,6 @@ packages:
   /@pulumi/query@0.3.0:
     resolution: {integrity: sha512-xfo+yLRM2zVjVEA4p23IjQWzyWl1ZhWOGobsBqRpIarzLvwNH/RAGaoehdxlhx4X92302DrpdIFgTICMN4P38w==}
     dev: false
-
-  /@tsconfig/esm@1.0.3:
-    resolution: {integrity: sha512-Gp56rIc3R8ab032nXMUitmc7YIb4nAi8DQ6Qt47tuL0Ssn9LIOm+o2FQmqPu3jX4z0TsqgzWwkmVygxcq+yHYg==}
-    dev: true
 
   /@tsconfig/node-lts@18.12.1:
     resolution: {integrity: sha512-UkIaMWDwJ+qJX/os8lzYh7m47qQJY7sIp1WZiEStASrpzczp27+jA0fJES+IjnS2OlDDLeBghNrVkKw8iYIRdA==}
