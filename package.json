@@ -1,6 +1,6 @@
 {
   "name": "get-pulumi-secret",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Opinionated approach to retriving a secret from Pulumi that expires.",
   "exports": "./dist/main.js",
   "types": "./dist/main.d.ts",
