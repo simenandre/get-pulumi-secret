@@ -2,20 +2,32 @@ import { Config, Output } from '@pulumi/pulumi';
 import { subDays } from 'date-fns';
 
 export interface GetTokenOptions {
-  type: 'npm' | 'github';
-
   /**
    * Config name to use
-   * @default npm-token or github-token
+   *
+   * @example
+   * ```typescript
+   * const npmToken = getToken({ name: 'npm-token' });
+   * const npmToken = getToken({ name: 'github-token' });
+   * ```
    */
-  configTokenName?: string;
+  name: string;
 
   /**
-   * config name
+   * Config namespace
    *
-   * used to construct Pulumi config
+   * This function uses `pulumi.Config` under the hood,
+   * so you can use this option to specify the namespace
+   * to use.
+   *
+   * @example
+   * ```typescript
+   * const npmToken = getToken({ name: 'npm-token', namespace: 'my-namespace' });
+   * ```
+   *
+   * The example above will resolve to `my-namespace:npm-token`.
    */
-  configName?: string;
+  namespace?: string;
 
   /**
    * How many days before the token expires
@@ -25,17 +37,34 @@ export interface GetTokenOptions {
   expiryDays?: number;
 }
 
-export function getToken(opts: GetTokenOptions): Output<string> {
-  const { type, configName, configTokenName, expiryDays = 10 } = opts;
+/**
+ * Get a token from pulumi config
+ * and fail if it expires in less than 10 days
+ *
+ * @example
+ * ```typescript
+ * import { getToken } from 'get-pulumi-token';
+ *
+ * const token = getToken('github-token');
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { getToken } from 'get-pulumi-token';
+ *
+ * const token = getToken({ name: 'github-token', namespace: 'my-namespace' });
+ * ```
+ *
+ * @param opts GetTokenOptions or string
+ * @returns pulumi.Output<string>
+ */
+export function getToken(opts: GetTokenOptions | string): Output<string> {
+  const options = typeof opts === 'string' ? { name: opts } : opts;
+  const { name, namespace, expiryDays = 10 } = options;
 
-  const config = new Config(configName);
+  const config = new Config(namespace);
 
-  const resolvedConfigTokenName =
-    configTokenName ?? type === 'npm' ? 'npm-token' : 'github-token';
-
-  const expirtyDateRaw = config.requireSecret(
-    `${resolvedConfigTokenName}-expires-at`,
-  );
+  const expirtyDateRaw = config.requireSecret(`${name}-expires-at`);
 
   return expirtyDateRaw.apply(expiry => {
     const expiryDate = new Date(expiry);
@@ -43,10 +72,10 @@ export function getToken(opts: GetTokenOptions): Output<string> {
 
     if (expiryDate < minus10Days) {
       throw new Error(
-        `Token for ${type} expires on ${expiryDate}. Failing to promote renewing!`,
+        `Token for ${name} expires on ${expiryDate}. Failing to promote renewing!`,
       );
     }
 
-    return config.requireSecret(resolvedConfigTokenName);
+    return config.requireSecret(name);
   });
 }
