@@ -1,3 +1,6 @@
 {
-  "extends": ["@bjerk/eslint-config"]
+  "extends": ["@bjerk/eslint-config"],
+  "parserOptions": {
+    "project": true
+  }
 }
