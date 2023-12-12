@@ -31,7 +31,7 @@
   "devDependencies": {
     "@bjerk/eslint-config": "^4.0.0",
     "@cobraz/prettier": "^2.0.1",
-    "@tsconfig/node-lts": "^18.12.1",
+    "@tsconfig/node-lts": "^20.0.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/dedent": "^0.7.0",
     "@types/node": "^18",
