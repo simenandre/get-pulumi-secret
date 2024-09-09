@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "@pulumi/pulumi": "^3.65.1",
-    "date-fns": "^2.30.0"
+    "date-fns": "^3.0.0"
   }
 }
