@@ -20,8 +20,8 @@ devDependencies:
     specifier: ^2.0.1
     version: 2.0.1(prettier@3.3.3)
   '@tsconfig/node-lts':
-    specifier: ^18.12.1
-    version: 18.12.1
+    specifier: ^20.0.0
+    version: 20.1.0
   '@tsconfig/strictest':
     specifier: ^2.0.1
     version: 2.0.1
@@ -438,8 +438,8 @@ packages:
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
     dev: true
 
-  /@tsconfig/node-lts@18.12.1:
-    resolution: {integrity: sha512-UkIaMWDwJ+qJX/os8lzYh7m47qQJY7sIp1WZiEStASrpzczp27+jA0fJES+IjnS2OlDDLeBghNrVkKw8iYIRdA==}
+  /@tsconfig/node-lts@20.1.0:
+    resolution: {integrity: sha512-3w2D9MfGdqBL51pHB5nGFmGtXBn1gbO+n9xzwcGSvZPArtCn4tElk+6EeelLXispAeqv13GAgbzkgLNHtoxOCQ==}
     dev: true
 
   /@tsconfig/strictest@2.0.1:
