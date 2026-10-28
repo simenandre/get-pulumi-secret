@@ -33,7 +33,7 @@
     "@cobraz/prettier": "^2.0.1",
     "@tsconfig/node-lts": "^18.12.1",
     "@tsconfig/strictest": "^2.0.1",
-    "@types/dedent": "^0.7.0",
+    "@types/dedent": "^1.0.0",
     "@types/node": "^18",
     "typescript": "^5.0.4"
   },
